@@ -1,0 +1,84 @@
+.navbar{
+    background: #04af68de;
+/*     margin-bottom: 35px;
+ */}
+.navbar .navbar-brand{
+    color: #fff;
+    
+}
+.navbar .navbar-brand img{
+ max-width: 90px;
+}
+
+.navbar .nav-item .nav-link{
+    color: #fff;
+    font-size: 18px;
+}
+
+.banar .lib-info{
+    background: linear-gradient(to right, rgba(27, 27, 27, 0.486), rgba(48, 47, 47, 0.479)), url("../../images/bannar-index.jpg");
+    background-size: cover;
+    height: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.banar .lib-info p{
+    font-size: 24px;
+}
+
+.card  {
+    width: 180px;
+    height: 250px;
+}
+
+.card:hover{
+    padding: 3px;
+    border: 1px solid #000;
+}
+.card  .card-title{
+ text-decoration: none;
+ color: rgb(255, 255, 255);
+}
+
+.card .img-cover{
+z-index: 1;
+
+}
+.card .card-body{
+    z-index: 2;
+    position: absolute;
+    bottom: 0px;
+    background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 50%);
+    text-align: right;
+    font-size: 20px;
+    width: 100%;
+    padding: 4%;
+}
+
+/************ book details page **************/
+
+.books .book{
+    margin-top: 25px;
+}
+
+ .related-books{
+    margin-top: 50px;
+}
+ .books a{
+     text-decoration: none;
+     /* color: #04af68de; */
+ }
+/* Categories page  */
+
+.ctegories-card{
+    height: 100px;
+}
+
+.authors .card {
+    height: auto;
+}
