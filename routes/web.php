@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\AuthorsController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\Front\AuthorsController as FrontAuthorsController;
 use App\Http\Controllers\Front\BookController;
 use App\Http\Controllers\Front\CategoriesController as FrontCategoriesController;
 use App\Http\Controllers\Front\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,7 @@ Route::prefix('admin')
 Route::resource('categories','CategoriesController');
 Route::resource('authors','AuthorsController');
 Route::resource('books','BooksController');
+Route::resource('roles','RolesController');
 });
 
 

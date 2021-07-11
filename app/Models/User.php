@@ -44,4 +44,21 @@ class User extends Authenticatable implements MustVerifyEmail
     public function books(){
         return  $this->hasMany(Book::class, 'user_id','id');
       }
+
+
+   public function roles(){
+      return $this->belongsToMany(Role::class);
+   }   
+
+   
+   public function hasPermissions($permission){
+    foreach($this->roles as $role){
+    if (in_array($permission,$role->permissions)) {
+        
+        return true;
+    }
+}
+    return abort(403,'انت مش مدير يا كلب');
+}
+
 }

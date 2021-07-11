@@ -34,6 +34,8 @@ class BooksController extends Controller
     public function create()
     {
         
+       $this->authorize('create',Book::class);
+       
         $categories = Category::all();
         $authors = Author::all();
         return view('admin.books.create',[
@@ -53,7 +55,7 @@ class BooksController extends Controller
     public function store(BookRequest $request,$id = '')
     {
         
-      
+        $this->authorize('create',Book::class);
         $data = $request->all();
        // dd($data);
         if($request->hasFile('image')){
@@ -100,6 +102,7 @@ class BooksController extends Controller
     public function edit($id)
     {
         $books = Book::findOrFail($id);
+        $this->authorize('edit',$books);
         $categories = Category::all();
         $authors = Author::all();
         return view('admin.books.edit',[
@@ -119,7 +122,9 @@ class BooksController extends Controller
     public function update(BookRequest $request, $id)
     {
        // $clean = $this->booklValidation($request,$id);
-        $book = Book::findOrFail($id);
+
+       $book = Book::findOrFail($id);
+       $this->authorize('edit',$book);
         $data = $request->all();
         $prevImage = false;
         $prevFile = false;
@@ -152,7 +157,11 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
+       
+        
+
         $book = Book::findOrFail($id);
+        $this->authorize('delete',$book);
         $book->delete();
         if ($book->image || $book->file) {
             Storage::disk('uploads')->delete($book->image);

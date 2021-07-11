@@ -4,7 +4,7 @@
   {{ $message }}
   </div>
   @enderror
-<form  action="{{route('admin.categories.update',$category->id)}}" method="post">
+<form method="post"  action="{{route('admin.categories.update',$category->id)}}" >
   @method('put')    
   @csrf
 <div class="mb-3">
