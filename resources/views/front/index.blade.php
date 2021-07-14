@@ -2,10 +2,17 @@
 @section('content')
 <!-- Start banar  -->
 <div class="banar">
-    <div class="overlay"></div>
-    <div class="lib-info text-center">
-        <h3>تحميل كتب وروايات PDF</h3>
-        <p>من أجل نشر المعرفة والثقافة، وغرس حب القراءة بين المتحدثين باللغة العربية</p>
+
+    <div class="lib-info">
+        <h3>الفضول أحد الخصائص الدائمة والأكيدة للعقل النشيط.</h3>
+       
+
+        <form class="d-flex form-group" action="{{route('search')}}" method="get">
+            <input class="form-control search me-2" type="search" placeholder="ابحث عن كتاب أو مؤلف" name="search" aria-label="Search">
+            <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+
     </div>
 </div>
 <!-- End banar -->
@@ -13,28 +20,49 @@
 <!-- Start Books -->
 <div class="books">
     <div class="container">
-        
-    @foreach($categories as $category)
         <div class="row">
-            <h3 class="mt-3">{{$category->name}}</h3>
-            @foreach($category->books as $book)
 
-            <div class="col-md-6 col-lg-2 mt-2">
-                <a href="{{route('show.book',$book->slug)}}">
+
+            <h3 class="mt-3 title">الأكثر تحميلاً</h3>
+
+            @foreach($highBooks as $highBook)
+
+            <div class="col col-lg-2 mt-2">
+                <a href="{{route('show.book',$highBook->slug)}}">
                     <div class="card text-center">
                         <div class="img-cover">
-                            <img height="245px" src="{{asset('uploads/'.$book->image)}}" alt="Book Cover" title="رواية" class="card-img-top">
+                            <img height="245px" src="{{asset('uploads/'.$highBook->image)}}" alt="Book Cover" title="{{$highBook->name}}" class="card-img-top">
                         </div>
                         <div class="card-body">
-                            <a class="card-title" href="">{{$book->name}}</a>
+                            <p class="card-title">{{$highBook->name}}</p>
                         </div>
                     </div>
                 </a>
             </div>
-           
-        @endforeach
+
+            @endforeach
+            
+            <h3 class="mt-3 title">أحدث الكتب</h3>
+
+            @foreach($books as $book)
+
+            <div class="col col-lg-2 mt-2">
+                <a href="{{route('show.book',$book->slug)}}">
+                    <div class="card text-center">
+                        <div class="img-cover">
+                            <img height="245px" src="{{asset('uploads/'.$book->image)}}" alt="Book Cover" title="{{$book->name}}" class="card-img-top">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title">{{$book->name}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            @endforeach
+
         </div>
-        @endforeach
+
     </div>
 </div>
 

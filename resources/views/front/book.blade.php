@@ -6,23 +6,23 @@
         <div class="book">
             <div class="row">
 
-                <div class="col-md-4">
-                    <div class="book-cover">
+                <div class="col-md-12 col-lg-4">
+                    <div class="book-cover text-center">
                         <img width="250px" src="{{$book->image_book}}" alt=" Book cover">
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="book-content">
+                <div class="col col-lg-8 mt-3">
+                    <div class="book-content ">
                         <h4>{{$book->name}}</h4>
                         <h5>
                             <a href=""></a>
                         </h5>
                         <hr>
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <p>{{$book->description}}</p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <table class="table">
                                 <tr>
                                 <th>المؤلف: </th>
@@ -48,11 +48,15 @@
                                 <th>حجم الملف : </th>
                                 <th>{{$sizeFile}}</th>
                                 </tr>
+                                <tr>
+                                <th>عدد التحميلات:</th>
+                                <th>{{$book->download_number}}</th>
+                                </tr>
                                 </table>
                             </div>
                         </div>
                         <div class="text-center">
-                        <a class="btn btn-success" href="{{route('download.book',$book->slug)}}">تحميل الكتاب</a>
+                        <a class="btn btn-download" href="{{route('download.book',$book->slug)}}"><i class="fas fa-download"></i> تحميل</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +74,7 @@
         <div class="row">
                 @foreach($categories as $category)
                 @foreach($category->books as $book)
-                <div class="col-md-6 col-lg-2 mt-2">
+                <div class="col col-lg-2 mt-2">
 
                 <a href="{{route('show.book',$book->slug)}}">
                     <div class="card text-center">

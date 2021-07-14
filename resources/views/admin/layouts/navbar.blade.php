@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <link rel="stylesheet" href="{{asset('css/yearpicker.css')}}">
+ <link rel="stylesheet" href="{{asset('css/selectize.bootstrap4.css')}}">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')}}"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('js/yearpicker.js')}}"></script>
-
-
-    <title>Document</title>
+    <script type="text/javascript" src="{{asset('js/selectize.min.js')}}"></script>
+    <title>{{ config('app.name', 'library') }}</title>
 </head>
 
 <body>
@@ -31,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">الأقسام</a>
@@ -77,7 +75,17 @@
                 <li class="nav-item">
                     <a class="nav-link @if(URL::current() == route('admin.authors.index')) active @endif" href="{{route('admin.authors.index')}}">المؤلفون</a>
                 </li>
-
+                
+                <li class="nav-item">
+                    <a class="nav-link @if(URL::current() == route('admin.users.index')) active @endif" href="{{route('admin.users.index')}}">المستخدمين</a>
+                </li>
+                
+                @can('view-any', App\Models\Role::class)
+                <li class="nav-item">
+                    <a class="nav-link @if(URL::current() == route('admin.roles.index')) active @endif" href="{{route('admin.roles.index')}}">الصلاحيات</a>
+                </li>
+                @endif
+                <!-- The current user can update the post... -->
             </ul>
             <div class="col-lg-9 content">
                 <h1 class="mt-3">{{$title}}</h1>
@@ -87,11 +95,11 @@
     </div>
 
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-    <!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script> -->
+    <script src="{{asset('js/all.min.js')}}"></script>
+  
 
-
+    @stack('script')
 </body>
 
-@stack('scripts')
 
 </html>

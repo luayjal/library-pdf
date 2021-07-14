@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="layout/images/book.png">
     <link rel="stylesheet" href="{{asset('front/css/bootstrap.rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/all.min.css')}}">
     <!-- Font -->
     <link rel="stylesheet" href="layout/font/droid-kufi.css">
 </head>
@@ -37,10 +38,10 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">تواصل معنا</a>
                     </li>
-                    <form class="d-flex" action="{{route('search')}}" method="get">
+                   <!--  <form class="d-flex" action="{{route('search')}}" method="get">
                         <input class="form-control me-2" type="search" placeholder="ابحث عن كتاب أو مؤلف" name="search" aria-label="Search">
                         <button class="btn btn-success" type="submit">Search</button>
-                    </form>
+                    </form> -->
                     <!--  <li  class="nav-item">
                    <a href="#" target="_blank" class="nav-link dashboard-btn">لوحة التحكم</a>
                    </li> -->
@@ -54,11 +55,12 @@
     <main>
         @yield('content')
     </main>
-    <footer class="text-center">
-        <p>جميع الحقوق محفوظة &copy; 2020</p>
+    <footer class="text-center mt-5">
+        <p class="copyright">جميع الحقوق محفوظة &copy; 2020</p>
     </footer>
     <!-- End Footer -->
     <script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('front/js/all.min.js')}}"></script>
 </body>
 
 </html>

@@ -59,7 +59,7 @@
 
 <div class="mb-3">
     <label for="" class="form-label"> القسم</label>
-    <select class="form-control select2" multiple name="category_id">
+    <select class="form-control "  name="category_id">
         <option></option>
         @foreach($categories as $category)
         <option class="form-control" value="{{$category->id}}" @if(isset($books->category->id)) @if($category->id == $books->category->id) selected @endif @endif >{{$category->name}}</option>
@@ -73,7 +73,8 @@
 </div>
 <div class="mb-3">
     <label for="" class="form-label">المؤلف</label>
-    <select class="form-control select2 " multiple name="author_id" id="select2-dropdown">
+    <select class="form-control "  name="author_id" id="select2-dropdown">
+        <option value=""></option>
         @foreach($authors as $author)
         <option class="form-control" value="{{$author->id}}" @if(isset($books->author->id)) @if($author->id == $books->author->id) selected @endif @endif>{{$author->name}}</option>
         @endforeach
@@ -97,10 +98,10 @@
 
 <button class="btn btn-primary">{{$btn_name ?? 'حفظ'}}</button>
 
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.select2').select2();
+@push('script')
+  <script>
+    $(function() {
+      $('select').selectize({});
     });
-</script>
-@endpush
+  </script>
+  @endpush

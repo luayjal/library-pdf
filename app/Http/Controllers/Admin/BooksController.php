@@ -20,7 +20,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Book::latest()->where('user_id',Auth::user()->id)->paginate(5);
+        $this->authorize('view-any',Book::class);
+        $books = Book::latest()->paginate(10);
         return view('admin.books.index',[
             'books' => $books
         ]);
@@ -102,7 +103,7 @@ class BooksController extends Controller
     public function edit($id)
     {
         $books = Book::findOrFail($id);
-        $this->authorize('edit',$books);
+        $this->authorize('update', $books);
         $categories = Category::all();
         $authors = Author::all();
         return view('admin.books.edit',[
@@ -124,7 +125,8 @@ class BooksController extends Controller
        // $clean = $this->booklValidation($request,$id);
 
        $book = Book::findOrFail($id);
-       $this->authorize('edit',$book);
+
+       $this->authorize('update',$book);
         $data = $request->all();
         $prevImage = false;
         $prevFile = false;

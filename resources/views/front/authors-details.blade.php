@@ -48,7 +48,7 @@
                             <img height="250px" src="{{$book->image_book}}" alt="Book Cover" class="card-img-top">
                         </div>
                         <div class="card-body">
-                            <a class="card-title" href="">{{$book->name}}</a>
+                            <p class="card-title" >{{$book->name}}</p>
                         </div>
                     </div>
                 </a>

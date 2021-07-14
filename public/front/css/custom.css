@@ -1,3 +1,7 @@
+body{
+    background: rgb(243, 243, 243);
+}
+
 .navbar{
     background: #04af68de;
 /*     margin-bottom: 35px;
@@ -15,10 +19,15 @@
     font-size: 18px;
 }
 
+.banar{
+    width: 100%;
+}
+
 .banar .lib-info{
     background: linear-gradient(to right, rgba(27, 27, 27, 0.486), rgba(48, 47, 47, 0.479)), url("../../images/bannar-index.jpg");
     background-size: cover;
     height: 300px;
+    width: 100%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -31,6 +40,9 @@
     font-size: 24px;
 }
 
+.banar .search{
+    width: 300px;
+}
 .card  {
     width: 180px;
     height: 250px;
@@ -43,6 +55,7 @@
 .card  .card-title{
  text-decoration: none;
  color: rgb(255, 255, 255);
+ text-align: center;
 }
 
 .card .img-cover{
@@ -60,6 +73,14 @@ z-index: 1;
     padding: 4%;
 }
 
+.books a{
+    color: rgb(78, 78, 78);
+}
+.books .title{
+   
+    padding: 10px 0;
+    border-bottom: 4px solid #04af68de;
+}
 /************ book details page **************/
 
 .books .book{
@@ -81,4 +102,25 @@ z-index: 1;
 
 .authors .card {
     height: auto;
+}
+
+.books .container-category{
+    background: #fff;
+}
+
+footer{
+    background: #04af68de;
+    padding: 7px;
+    color: #fff;
+}
+footer .copyright{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-download{
+    
+    background: #04af68de;
+    color: #fff !important;
+    font-size: 20px;
 }

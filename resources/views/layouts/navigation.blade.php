@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                        الأقسام
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.index')">
+                        الكتب
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.authors.index')" :active="request()->routeIs('admin.authors.index')">
+                       المؤلفون
+                    </x-nav-link>
                 </div>
             </div>
 

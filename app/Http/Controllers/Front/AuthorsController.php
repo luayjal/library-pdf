@@ -11,7 +11,7 @@ class AuthorsController extends Controller
 {
     public function index(){
 
-        $authors = Author::latest()->paginate(5);
+        $authors = Author::latest()->paginate(10);
         return view('front.authors',[
             'authors' => $authors
         ]);
@@ -32,7 +32,7 @@ class AuthorsController extends Controller
         {
             $query->where('name','like',"%{$value}%");
           
-        })->get();
+        })->where('status', 'active')->get();
 
         $authors = Author::when($request->search,function($query , $value)
         {

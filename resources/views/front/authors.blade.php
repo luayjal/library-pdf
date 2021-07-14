@@ -15,9 +15,9 @@
     <div class="container">
         
         <div class="row">
-            <h3 class="mt-3"></h3>
+            <h3 class="mt-3">المؤلفون</h3>
             @foreach($authors as $author)
-            <div class="col-md-6 col-lg-2 mt-2">
+            <div class="col col-lg-2  mt-2">
                 <a href="{{route('show.authors',$author->slug)}}">
                     <div class="card text-center">
                         <div class="img-cover">
@@ -32,6 +32,10 @@
            
         @endforeach
         </div>
+        <div class="mt-2">
+        {{$authors->links()}}
+        </div>
+        
     </div>
 </div>
 

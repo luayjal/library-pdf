@@ -42,7 +42,7 @@ class AuthorsController extends Controller
     {
        
          $request->validate(Author::validateRuels($id),Author::CoustomMessage());
-         dd($request->all());
+        // dd($request->all());
         $data = $request->all();
         $data['slug'] = Str::slug_ar($data['name']);;
 

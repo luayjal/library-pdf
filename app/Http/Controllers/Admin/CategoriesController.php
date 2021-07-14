@@ -14,11 +14,21 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $categories = Category::latest()->paginate(5);
+       $categories = Category::when($request->name , function($query , $value){
+           $query->where('name','LIKE',"%{$value}%");
+       })
+      ->when($request->parent_id, function($query , $value){
+          $query->where('parent_id',$value);
+      })
+       ->latest()->orderBy('parent_id')->paginate(10);
+      
+       $parents = Category::orderBy('name','asc')->get();
+
         return view('admin.category.index',[
-            'categories'=> $categories
+            'categories'=> $categories,
+            'parents' => $parents
         ]);
     }
 
@@ -29,7 +39,10 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+       $parents = Category::get();
+        return view('admin.category.create',[
+            'parents' => $parents
+        ]);
     }
 
     /**
@@ -76,9 +89,11 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
+        $parents = Category::where('id','!=' ,$id)->get();
 
         return view('admin.category.edit',[
-            'category' => $category
+            'category' => $category,
+            'parents' => $parents,
         ]);
     }
 
@@ -102,7 +117,7 @@ class CategoriesController extends Controller
     ]);
     $category = Category::findOrFail($id);
     
-
+   
        $request->merge([
         'slug' => Str::slug_ar($request->name),
          ]);

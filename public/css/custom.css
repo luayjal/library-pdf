@@ -26,3 +26,6 @@ form{
     margin-right: 25px
 }
 
+.search .search-input{
+    width:200px;
+}

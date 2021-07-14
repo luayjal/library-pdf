@@ -16,7 +16,7 @@
         
           @foreach($authors as $author)
         <div class="row">
-            <div class="col-md-6 col-lg-2 mt-2">
+            <div class="col col-lg-2 mt-2">
                 <a href="{{route('show.authors',$author->slug)}}">
                     <div class="card text-center">
                         <div class="img-cover">
@@ -30,7 +30,7 @@
             </div>
             @endforeach
             @foreach($books as $book)
-            <div class="col-md-6 col-lg-2 mt-2">
+            <div class="col col-lg-2 mt-2">
                 <a href="{{route('show.book',$book->slug)}}">
                     <div class="card text-center">
                         <div class="img-cover">

@@ -13,7 +13,7 @@
                 <th scope="col">المؤلف</th>
                 <th scope="col">الحالة</th>
                 <th scope="col">تاريخ الانشاء</th>
-                <th scope="col"></th>
+                <th scope="col">الإجراءات</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +29,11 @@
                 <td>{{$book->status}}</td>
                 <td>{{$book->created_at}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('admin.books.edit',$book->id)}}">تعديل</a>
+                    <a class="btn btn-primary" href="{{route('admin.books.edit',$book->id)}}"><i class="fas fa-edit"></i></a>
                     <form class="d-inline" action="{{route('admin.books.destroy',$book->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger" type="submit">حذف</button>
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>

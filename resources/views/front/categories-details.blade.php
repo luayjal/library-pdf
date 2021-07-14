@@ -23,7 +23,7 @@
                 <a href="{{route('show.book',$book->slug)}}">
                     <div class="card text-center">
                         <div class="img-cover">
-                            <img height="250px" src="{{asset('uploads/'.$book->image)}}" alt="Book Cover" title="رواية" class="card-img-top">
+                            <img height="250px" src="{{asset('uploads/'.$book->image)}}" alt="Book Cover" title="{{$book->name}}" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <a class="card-title" href="">{{$book->name}}</a>

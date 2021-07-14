@@ -10,24 +10,30 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(Request $request){
-        $categories = Category::when($request->search,function($query,$value){
-            $query->Where('name','like',"%{$value}%")
-            ->orWhereHas('books',function ($query) use ($value) {
-                $query->where('name','like',"%{$value}%");
-           });
-        })
-        ->with(['books'=>function ($query) {
+     /*  $categories = Category::with(['books' => function ($query) {
             $query->where('status', 'active');
        }])
        ->whereHas('books')
+       ->limit(6) 
+       ->get()
+       ->map(function ($query) {
+        $query->books = $query->books->take(6);
+        return $query;
+         });
+     */
        
-       ->limit(6)
-       ->get();
+         
+         $books = Book::where('status' , 'active')->latest()->take(18)->get();
+         $highBooks = Book::where('status' , 'active')->orderBy('download_number','desc')->take(6)->get();
+         
+ 
+        //return $highBooks;
 
-        $books = Book::where('status','active')->limit(10)->get();
+       // $books = Book::where('status','active')->limit(10)->get();
        return view('front.index',[
-            'categories' => $categories,
-            'books' => $books
+            //'categories' => $categories,
+           'books' => $books,
+           'highBooks' => $highBooks
         ]);
     }
 }

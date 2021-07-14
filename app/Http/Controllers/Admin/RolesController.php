@@ -14,6 +14,7 @@ class RolesController extends Controller
      */
     public function index()
     {
+        $this->authorize('view-any',Role::class);
         $roles = Role::paginate(10);
         return view('admin.roles.index',[
             'roles' => $roles,
@@ -28,6 +29,7 @@ class RolesController extends Controller
     public function create()
     {
        
+        $this->authorize('create',Role::class);
         return view('admin.roles.create',[
             'role' => new Role(),
         ]);
@@ -41,6 +43,8 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+       
+        $this->authorize('create',Role::class);
         $request->validate([
             'name'=> 'required',
             'permissions' => 'required|array'
@@ -70,7 +74,7 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        
+        $this->authorize('update',$role);
         return view('admin.roles.edit',[
             'role' => $role,
         ]);
@@ -86,12 +90,14 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $role = Role::findOrFail($id);
+        
+        $this->authorize('update',$role);
        
         $request->validate([
             'name'=> 'required',
             'permissions' => 'required|array'
         ]);
-        $role = Role::findOrFail($id);
         $role->update($request->all());
         return redirect()->route('admin.roles.index');
     }
@@ -104,6 +110,9 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $this->authorize('delete',$role);
+        $role->delete();
+        return redirect()->route('admin.roles.index');
     }
 }

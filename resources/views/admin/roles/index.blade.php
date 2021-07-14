@@ -18,7 +18,6 @@
             <tr>
                 <th scope="row">{{$role->id}}</th>
                 <td>{{$role->name}}</td>
-                
                 <td>{{$role->created_at}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.roles.edit',$role->id)}}">تعديل</a>
@@ -32,5 +31,5 @@
             @endforeach
         </tbody>
     </table>
-    {{$rolesb->links()}}
+    {{$roles->links()}}
 </x-navbar-layout>

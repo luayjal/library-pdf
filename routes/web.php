@@ -38,6 +38,7 @@ Route::prefix('admin')
 Route::resource('categories','CategoriesController');
 Route::resource('authors','AuthorsController');
 Route::resource('books','BooksController');
+Route::resource('users','UsersController');
 Route::resource('roles','RolesController');
 });
 

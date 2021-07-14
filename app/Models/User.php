@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return true;
     }
 }
-    return abort(403,'انت مش مدير يا كلب');
+    return false;
 }
 
 }

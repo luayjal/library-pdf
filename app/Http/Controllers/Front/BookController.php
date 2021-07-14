@@ -13,7 +13,9 @@ class BookController extends Controller
   public $name=null;
     public function show($slug){
 
-         $book = Book::where('slug',$slug)->first();
+         $book = Book::where('slug',$slug)
+         ->where('status', 'active')
+         ->first();
 
         $categories = Category::where('name',$book->category->name)
         ->with(['books' => function($q) use ($book){
@@ -32,6 +34,7 @@ class BookController extends Controller
 
     public function downloadBook($slug){
         $book = Book::where('slug',$slug)->first();
+        $book->increment('download_number');
         return Storage::disk('uploads')->download($book->file);
     }
 }
