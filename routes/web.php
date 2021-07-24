@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\AuthorsController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\Front\AuthorsController as FrontAuthorsController;
 use App\Http\Controllers\Front\BookController;
 use App\Http\Controllers\Front\CategoriesController as FrontCategoriesController;
 use App\Http\Controllers\Front\HomeController;
-
+use App\Models\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::resource('authors','AuthorsController');
 Route::resource('books','BooksController');
 Route::resource('users','UsersController');
 Route::resource('roles','RolesController');
+Route::get('messages',[MessageController::class,'index'])->name('message');
+Route::get('messages/{slug}',[MessageController::class,'show'])->name('message.details');
 });
 
 
@@ -51,3 +54,5 @@ Route::get('authors/{slug}',[FrontAuthorsController::class,'show'])->name('show.
 Route::get('books/{slug}',[BookController::class,'show'])->name('show.book');
 Route::get('books/download/{slug}',[BookController::class,'downloadBook'])->name('download.book');
 Route::get('search',[FrontAuthorsController::class,'search'])->name('search');
+Route::get('contact-us', [HomeController::class,'contactUs'])->name('contact-us');
+Route::post('contact-us/save', [HomeController::class,'storeMessage'])->name('contact-us.save');

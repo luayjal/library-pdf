@@ -19,11 +19,11 @@
                 <td>{{$author->name}}</td>
                 <td>{{$author->created_at}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('admin.authors.edit',$author->id)}}">تعديل</a>
+                    <a class="btn btn-primary" href="{{route('admin.authors.edit',$author->id)}}"><i class="fas fa-edit"></i></a>
                     <form class="d-inline" action="{{route('admin.authors.destroy',$author->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger" type="submit">حذف</button>
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>

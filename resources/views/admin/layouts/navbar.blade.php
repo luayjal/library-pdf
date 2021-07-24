@@ -17,6 +17,7 @@
     <script src="{{asset('js/yearpicker.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/selectize.min.js')}}"></script>
     <title>{{ config('app.name', 'library') }}</title>
+    <link rel="icon" type="image/png" href="/book-icon.png">
 </head>
 
 <body>
@@ -28,19 +29,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">الأقسام</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">الكتب</a>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn btn-outline-secondary" aria-current="page" href="{{route('admin.message')}}">الرسائل</a>
                     </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="/">عرض الموقع</a>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn btn-outline-primary" target="_blank" href="/">عرض الموقع</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,22 +61,22 @@
 
             <ul class="nav flex-column col-md-3 col-lg-2 bg-light">
                 <li class="nav-item">
-                    <a class="nav-link @if(URL::current() == route('admin.categories.index')) active @endif" aria-current="page" href="{{route('admin.categories.index')}}">الأقسام</a>
+                    <a class="nav-link @if(request()->routeIs('admin.categories.index')) active @endif" aria-current="page" href="{{route('admin.categories.index')}}">الأقسام</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(URL::current() == route('admin.books.index')) active @endif" href="{{route('admin.books.index')}}">الكتب</a>
+                    <a class="nav-link @if(request()->routeIs('admin.books.index')) active @endif" href="{{route('admin.books.index')}}">الكتب</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(URL::current() == route('admin.authors.index')) active @endif" href="{{route('admin.authors.index')}}">المؤلفون</a>
+                    <a class="nav-link @if(request()->routeIs('admin.authors.index')) active @endif" href="{{route('admin.authors.index')}}">المؤلفون</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link @if(URL::current() == route('admin.users.index')) active @endif" href="{{route('admin.users.index')}}">المستخدمين</a>
+                    <a class="nav-link @if(request()->routeIs('admin.users.index')) active @endif" href="{{route('admin.users.index')}}">المستخدمين</a>
                 </li>
                 
                 @can('view-any', App\Models\Role::class)
                 <li class="nav-item">
-                    <a class="nav-link @if(URL::current() == route('admin.roles.index')) active @endif" href="{{route('admin.roles.index')}}">الصلاحيات</a>
+                    <a class="nav-link @if(request()->routeIs('admin.roles.index')) active @endif" href="{{route('admin.roles.index')}}">الصلاحيات</a>
                 </li>
                 @endif
                 <!-- The current user can update the post... -->

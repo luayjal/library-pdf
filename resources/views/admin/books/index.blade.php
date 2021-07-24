@@ -2,7 +2,7 @@
     @if(session()->has('status'))
     <div class="alert alert-success">{{session()->get('status')}}</div>
     @endif
-    <a href="{{route('admin.books.create')}}" class="btn btn-info mt-3 mb-3">اضافة</a>
+    <a href="{{route('admin.books.create')}}" class="btn btn-outline-success mt-3 mb-3"><i class="fas fa-plus"></i></a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -29,11 +29,11 @@
                 <td>{{$book->status}}</td>
                 <td>{{$book->created_at}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('admin.books.edit',$book->id)}}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-outline-primary" href="{{route('admin.books.edit',$book->id)}}"><i class="fas fa-edit"></i></a>
                     <form class="d-inline" action="{{route('admin.books.destroy',$book->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt "></i></button>
                     </form>
                 </td>
             </tr>

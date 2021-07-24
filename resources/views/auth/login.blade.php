@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-40" />
-                <h1 class="text-3xl mt-4 text-green-500 text-center">مكتبة إقرأ</h1>
+                <h1 class="text-3xl mt-4 text-white text-center">مكتبة إقرأ</h1>
             </a>
         </x-slot>
 

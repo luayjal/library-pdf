@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,6 @@ class HomeController extends Controller
          });
      */
        
-         
          $books = Book::where('status' , 'active')->latest()->take(18)->get();
          $highBooks = Book::where('status' , 'active')->orderBy('download_number','desc')->take(6)->get();
          
@@ -35,5 +36,21 @@ class HomeController extends Controller
            'books' => $books,
            'highBooks' => $highBooks
         ]);
+    }
+
+    public function contactUs(){
+
+        return view('front.contact-us');
+
+    }
+
+    public function storeMessage(Request $request){
+
+   $request->merge([
+           'slug'=>Str::slug_ar($request->name).'-'.Str::random(7),
+       ]);
+   // dd($request->all());
+        Message::create($request->all());
+        return redirect()->route('contact-us')->with(['success','تم الإرسال']);
     }
 }

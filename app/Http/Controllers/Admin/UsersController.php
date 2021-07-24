@@ -58,11 +58,12 @@ class UsersController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $request->password = Hash::make($request->password);
+       dd ($request->all());
         $users = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'type'=>$request->type,
         ]);
         $users->roles()->attach($request->role_id);
         return redirect()->route('admin.users.index');
@@ -119,10 +120,13 @@ class UsersController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,'. $id,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],          
         ]);
+
+     //   return ($request->all());
         $users->update([ 
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
+        'type'=>$request->type,
         ]);
 
         $users->roles()->sync($request->role_id);

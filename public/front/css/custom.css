@@ -13,7 +13,10 @@ body{
 .navbar .navbar-brand img{
  max-width: 90px;
 }
-
+.navbar-nav{
+    width: 55%;
+    justify-content: space-between;
+}
 .navbar .nav-item .nav-link{
     color: #fff;
     font-size: 18px;
@@ -110,7 +113,6 @@ z-index: 1;
 
 footer{
     background: #04af68de;
-    padding: 7px;
     color: #fff;
 }
 footer .copyright{

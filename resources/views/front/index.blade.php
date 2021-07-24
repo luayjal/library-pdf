@@ -4,7 +4,7 @@
 <div class="banar">
 
     <div class="lib-info">
-        <h3>الفضول أحد الخصائص الدائمة والأكيدة للعقل النشيط.</h3>
+        <h3 class="mb-4" style="text-shadow: -4px 4px 6px #191919;">إن الكتاب هو الجليس الذي لا ينافق، ولا يمل، ولا يعاتب إذا جفوته، ولا يفشي سرك.</h3>
        
 
         <form class="d-flex form-group" action="{{route('search')}}" method="get">

@@ -2,7 +2,7 @@
     @if(session()->has('status'))
     <div class="alert alert-success">{{session()->get('status')}}</div>
     @endif
-    <a href="{{route('admin.users.create')}}" class="btn btn-info mt-3 mb-3">اضافة</a>
+    <a href="{{route('admin.users.create')}}" class="btn btn-success mt-3 mb-3"><i class="fas fa-user-plus"></i></a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,11 +24,11 @@
                 <td>{{$roles->name}}</td>
                 @endforeach
                 <td>
-                    <a class="btn btn-primary" href="{{route('admin.users.edit',$user->id)}}">تعديل</a>
+                    <a class="btn btn-primary" href="{{route('admin.users.edit',$user->id)}}"><i class="fas fa-user-edit"></i></a>
                     <form class="d-inline" action="{{route('admin.users.destroy',$user->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger" type="submit">حذف</button>
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-user-times"></i></button>
                     </form>
                 </td>
             </tr>

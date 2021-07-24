@@ -39,6 +39,21 @@
 </div>
 
 <div class="mb-3">
+    <label for="" class="form-label"> الرتبة</label>
+    
+    <select class="form-control"  name="type">
+        <option value=""></option>
+        <option class="form-control" value="user" >user</option>
+        <option class="form-control" value="admin" >admin</option>
+        <option class="form-control" value="super-admin">super admin</option>
+    </select>
+    @error('type')
+    <div class="alert alert-danger mb-2">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+<div class="mb-3">
     <label for="" class="form-label"> اضافة صلاحية</label>
     
     <select class="form-control"  name="role_id">
