@@ -14,12 +14,13 @@ body{
  max-width: 90px;
 }
 .navbar-nav{
-    width: 55%;
+    width: 80%;
+    
     justify-content: space-between;
 }
 .navbar .nav-item .nav-link{
     color: #fff;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .banar{
@@ -45,6 +46,10 @@ body{
 
 .banar .search{
     width: 300px;
+}
+
+.banar .btn-search{
+    box-shadow: -2px 2px 10px 1px #656363;
 }
 .card  {
     width: 180px;

@@ -13,9 +13,9 @@
 <!-- Start Books -->
 <div class="books">
     <div class="container">
-        
-          @foreach($authors as $author)
         <div class="row">
+            @if(!empty($authors))
+            @foreach($authors as $author)
             <div class="col col-lg-2 mt-2">
                 <a href="{{route('show.authors',$author->slug)}}">
                     <div class="card text-center">
@@ -29,6 +29,9 @@
                 </a>
             </div>
             @endforeach
+            @endif
+
+            @if(!empty($books))
             @foreach($books as $book)
             <div class="col col-lg-2 mt-2">
                 <a href="{{route('show.book',$book->slug)}}">
@@ -42,10 +45,10 @@
                     </div>
                 </a>
             </div>
-           
-        
+            @endforeach
+            @endif
+
         </div>
-        @endforeach
     </div>
 </div>
 

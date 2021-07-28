@@ -27,20 +27,39 @@
             <div class="collapse navbar-collapse " id="menu">
                 <ul class="navbar-nav  me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a href="/" class="nav-link btn-outline-light">الرئيسية</a>
+                        <a href="/" class="nav-link"><i class="fas fa-home"></i><span class="ms-2">الرئيسية</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{route('categories')}}" class="nav-link btn-outline-light">الأقسام</a>
+                        <a href="{{route('categories')}}" class="nav-link "><i class="fas fa-sitemap"></i><span class="ms-2">الأقسام</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('authors')}}" class="nav-link btn-outline-light">المؤلفون</a>
+                        <a href="{{route('authors')}}" class="nav-link "><i class="fas fa-users"></i><span class="ms-2">المؤلفون</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('contact-us')}}" class="nav-link btn-outline-light">تواصل معنا</a>
+                        <a href="{{route('contact-us')}}" class="nav-link "><i class="fas fa-headset"></i><span class="ms-2">تواصل معنا</span></a>
                     </li>
+                    @guest
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-auto" href="{{route('login')}}" class="nav-link">دخول</a>
+                        <a class="btn btn-outline-light mx-auto nav-link" href="{{route('login')}}"><i class="fas fa-sign-in-alt"></i><span class="ms-1">دخول</span></a>
                     </li>
+                    @endguest
+                    @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-2"></i><span class="me-2">{{ Auth::user()->name }}</span> 
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <form method="POST" id="logoutForm" action="{{ route('logout') }}">
+                                    @csrf
+
+                                </form>
+                                <a href="#" class="btn" onclick="document.getElementById('logoutForm').submit()"> تسجيل الخروج </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    @endauth
                     <!--  <form class="d-flex" action="{{route('search')}}" method="get">
                         <input class="form-control me-2" type="search" placeholder="ابحث عن كتاب أو مؤلف" name="search" aria-label="Search">
                         <button class="btn btn-success" type="submit">Search</button>
@@ -126,7 +145,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3 " style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 جميع الحقوق محفوظة:
+            جميع الحقوق محفوظة © 2021 :
             <a class="text-white" href="/">مكتبة إقرأ</a>
         </div>
         <!-- Copyright -->

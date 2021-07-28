@@ -19,7 +19,7 @@
           @endforeach
         </select>
       </div>
-      <button class="btn mt-4" type="submit"><i class="fas fa-search  fa-2x"></i></button>
+      <button class="btn btn-outline-dark mt-4" type="submit"><i class="fas fa-search fa-lg"></i></button>
     </form>
   </div>
   <a href="{{route('admin.categories.create')}}" class="btn btn-info mt-3 mb-3"><i class="fas fa-plus"></i></a>

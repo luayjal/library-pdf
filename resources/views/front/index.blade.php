@@ -9,7 +9,7 @@
 
         <form class="d-flex form-group" action="{{route('search')}}" method="get">
             <input class="form-control search me-2" type="search" placeholder="ابحث عن كتاب أو مؤلف" name="search" aria-label="Search">
-            <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn btn-outline-light btn-search" type="submit"><i class="fas fa-search fa-lg "></i></button>
         </form>
 
 

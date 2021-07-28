@@ -69,16 +69,16 @@
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.authors.index')) active @endif" href="{{route('admin.authors.index')}}">المؤلفون</a>
                 </li>
-                
+                @can('view-any', App\Models\User::class)
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.users.index')) active @endif" href="{{route('admin.users.index')}}">المستخدمين</a>
                 </li>
-                
+                @endcan
                 @can('view-any', App\Models\Role::class)
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.roles.index')) active @endif" href="{{route('admin.roles.index')}}">الصلاحيات</a>
                 </li>
-                @endif
+                @endcan
                 <!-- The current user can update the post... -->
             </ul>
             <div class="col-lg-9 content">

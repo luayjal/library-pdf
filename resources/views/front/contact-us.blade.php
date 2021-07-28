@@ -4,7 +4,7 @@
     @if(session()->has('success'))
     <div class="alert alert-success">{{session()->get('success')}}</div>
     @endif
-    <form action="{{route('contact-us.save')}}" method="post">
+    <form class="w-75" action="{{route('contact-us.save')}}" method="post">
         @csrf
         <h3>تواصل معنا</h3>
         <div class="mb-3">
@@ -16,8 +16,8 @@
             <input name="email" type="email" class="form-control" placeholder="name@example.com">
         </div>
         <div class="mb-3">
-            <label class="form-label">الرسالة</label>
-            <textarea name="message" class="form-control" rows="3"></textarea>
+            <label class="form-label ">الرسالة</label>
+            <textarea style="min-height:200px ;" name="message" class="form-control"  rows="3"></textarea>
         </div>
         <div class="mb-3 text-center">
 
