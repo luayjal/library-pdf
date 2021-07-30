@@ -27,14 +27,14 @@ Route::get('/', [HomeController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','type.user:admin,super-admin'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::prefix('admin')
 ->namespace('admin')
 ->as('admin.')
-->middleware('auth')
+->middleware('auth','type.user:admin,super-admin')
 ->group(function(){
 Route::resource('categories','CategoriesController');
 Route::resource('authors','AuthorsController');
