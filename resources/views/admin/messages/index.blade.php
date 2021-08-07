@@ -35,7 +35,7 @@
           
         <td>{{$message->created_at}}</td>
         <td>
-          <form class="d-inline" action="{{--route('admin.categories.destroy',$message->id)--}}" method="post">
+          <form class="d-inline" action="{{route('admin.message.destroy',$message->id)}}" method="post">
             @method('delete')
             @csrf
             <button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt"></i></button>

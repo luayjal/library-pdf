@@ -43,6 +43,7 @@ Route::resource('users','UsersController');
 Route::resource('roles','RolesController');
 Route::get('messages',[MessageController::class,'index'])->name('message');
 Route::get('messages/{slug}',[MessageController::class,'show'])->name('message.details');
+
 });
 
 
